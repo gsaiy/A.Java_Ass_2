@@ -26,29 +26,24 @@ class ListFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
 
-        // Initialize list models
         model1 = new DefaultListModel<>();
         model2 = new DefaultListModel<>();
         
-        // Add sample data
         model1.addElement("Apple");
         model1.addElement("Banana");
         model1.addElement("Cherry");
         model1.addElement("Date");
         model1.addElement("Elderberry");
         
-        // Initialize JLists
         list1 = new JList<>(model1);
         list2 = new JList<>(model2);
         list1.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-        // Scroll panes for lists
         JScrollPane scrollPane1 = new JScrollPane(list1);
         JScrollPane scrollPane2 = new JScrollPane(list2);
         scrollPane1.setPreferredSize(new Dimension(150, 200));
         scrollPane2.setPreferredSize(new Dimension(150, 200));
 
-        // Button to copy selected items
         copyButton = new JButton("Copy →");
         copyButton.addActionListener(new ActionListener() {
             @Override
@@ -61,7 +56,6 @@ class ListFrame extends JFrame {
             }
         });
 
-        // Add components to frame
         add(scrollPane1);
         add(copyButton);
         add(scrollPane2);
