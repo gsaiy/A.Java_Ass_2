@@ -32,7 +32,6 @@ import java.sql.*;
 //}
 
 //
-//// Database Connection Example
 public class A2_Q2 extends JFrame {
     private JTextField empIdField, nameField, ageField, salaryField;
     private JButton insertButton, retrieveButton;
@@ -48,12 +47,9 @@ public class A2_Q2 extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         setResizable(false);
-
-        // Database Connection
+        
         connectToDatabase();
-//        createTable();
-
-        // Input Fields
+        createTable();
         JPanel inputPanel = new JPanel(new GridLayout(5, 2));
         inputPanel.add(new JLabel("Emp ID:"));
         empIdField = new JTextField();
@@ -78,12 +74,10 @@ public class A2_Q2 extends JFrame {
 
         add(inputPanel, BorderLayout.NORTH);
 
-        // Display Area
         displayArea = new JTextArea();
         displayArea.setEditable(false);
         add(new JScrollPane(displayArea), BorderLayout.CENTER);
 
-        // Button Actions
         insertButton.addActionListener(e -> insertData());
         retrieveButton.addActionListener(e -> retrieveData());
 
@@ -98,14 +92,14 @@ public class A2_Q2 extends JFrame {
         }
     }
 
-//    private void createTable() {
-//        try (Statement stmt = connection.createStatement()) {
-//            String createTableSQL = "CREATE TABLE IF NOT EXISTS employees ( emp_id INT PRIMARY KEY,name VARCHAR(50),age INT,salary DOUBLE )";
-//            stmt.execute(createTableSQL);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
+   private void createTable() {
+       try (Statement stmt = connection.createStatement()) {
+           String createTableSQL = "CREATE TABLE IF NOT EXISTS employees ( emp_id INT PRIMARY KEY,name VARCHAR(50),age INT,salary DOUBLE )";
+           stmt.execute(createTableSQL);
+       } catch (SQLException e) {
+           e.printStackTrace();
+       }
+   }
 
     private void insertData() {
         try (PreparedStatement pstmt = connection.prepareStatement("INSERT INTO employees VALUES (?, ?, ?, ?)");) {
