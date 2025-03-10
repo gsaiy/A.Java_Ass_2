@@ -21,7 +21,6 @@ public class A2_Q3 extends JFrame {
 
         JTabbedPane tabbedPane = new JTabbedPane();
         
-        // Panel 1: Color Chooser
         JPanel colorPanel = new JPanel();
         JButton colorButton = new JButton("Choose Color");
         colorPanel.add(colorButton);
@@ -33,7 +32,6 @@ public class A2_Q3 extends JFrame {
             }
         });
 
-        // Panel 2: File Chooser
         JPanel filePanel = new JPanel();
         JButton openFileButton = new JButton("Open File");
         JButton saveFileButton = new JButton("Save File");
@@ -58,7 +56,6 @@ public class A2_Q3 extends JFrame {
             }
         });
         
-        // Add panels to tabs
         tabbedPane.addTab("Color Chooser", colorPanel);
         tabbedPane.addTab("File Dialogs", filePanel);
         
